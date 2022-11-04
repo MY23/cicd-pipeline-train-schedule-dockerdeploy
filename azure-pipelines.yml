@@ -31,10 +31,10 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         tasks: 'build'
-- stage: Build Docker Image
+- stage: BuildDockerImage
   displayName: Build  docker image
   jobs:
-  - job: Build-image
+  - job: BuildImage
     displayName: Build Image
     pool:
       vmImage: ubuntu-latest
