@@ -31,6 +31,20 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         tasks: 'build'
+    - task: ArchiveFiles@2
+      displayName: 'Train Schedule Archive'
+      inputs:
+        archiveType: zip
+        archiveFile: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
+        includeRootFolder: false
+        replaceExistingArchive: true
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
+        ArtifactName: "trainSchedule"
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
 - stage: BuildDockerImage
   displayName: Build  docker image
   jobs:
