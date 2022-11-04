@@ -62,5 +62,6 @@ stages:
         tags: |
           $(tag)
     - script: |
-        docker run MY23/cicd-pipeline-train-schedule-dockerdeploy:$(tag)
+        docker images
+#        docker run MY23/cicd-pipeline-train-schedule-dockerdeploy:$(tag)
       displayName: 'Test Dockerfile Build'
