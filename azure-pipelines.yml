@@ -45,6 +45,7 @@ stages:
         targetPath: '$(System.DefaultWorkingDirectory)/dist/trainSchedule.zip'
         ArtifactName: "trainSchedule"
         PathtoPublish: '$(System.DefaultWorkingDirectory)/dist/'
+
 - stage: BuildDockerImage
   displayName: Build  docker image
   jobs:
@@ -60,3 +61,6 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+    - script: |
+        docker run MY23/cicd-pipeline-train-schedule-dockerdeploy:$(tag)
+      displayName: 'Test Dockerfile Build'
