@@ -61,6 +61,7 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+        arguments: '-t my23/train-schedule:$(tag)'
     - script: |
         docker images
 #        docker run MY23/cicd-pipeline-train-schedule-dockerdeploy:$(tag)
