@@ -63,6 +63,6 @@ stages:
           $(tag)
         arguments: '-t my23/train-schedule:$(tag)'
     - script: |
-        docker images
-#        docker run MY23/cicd-pipeline-train-schedule-dockerdeploy:$(tag)
+        docker ps
+        docker run my23/train-schedule:$(tag) sh -c "echo $(curl localhost:8080)"
       displayName: 'Test Dockerfile Build'
